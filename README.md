@@ -1,5 +1,3 @@
-# Project-Wincaff-
-Project Wincaffè a Windows Optimization Tool for (Gaming and Not)
 # ⚡ OGD WinCaffè ULTIMATE ☕
 
 <div align="center">
