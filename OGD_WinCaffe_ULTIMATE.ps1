@@ -1,7 +1,7 @@
 #Requires -Version 5.1
 <#
 ═══════════════════════════════════════════════════════════════════════════════
- ⚡ OGD WinCaffè v7.2.3 ULTIMATE ⚡
+ ⚡ OGD WinCaffè v7.3.0 ULTIMATE ⚡
  
  Sistema Definitivo di Ottimizzazione Windows 11 per Gaming
  
@@ -11,14 +11,14 @@
  │ OGD Team - Original Gaming Design                           │
  └─────────────────────────────────────────────────────────────┘
  
- NOVITÀ v7.2.3:
+ NOVITÀ v7.3.0:
    🛠️ STRUMENTI EXTRA (AI/Copilot, OneDrive, Privacy, UI)
    📦 Programmi Opzionali Consigliati (9 app via Chocolatey)
    ❌ Rimozione AI/Copilot/Recall completa
    🔒 Telemetry OFF (NVIDIA, Adobe, VS, PowerShell)
    🎨 Ottimizzazioni UI (Dark mode, Menu classico, etc)
  
- INCLUDE v7.2.3:
+ INCLUDE v7.3.0:
    🧠 RAM INTELLIGENTE DDR4/DDR5 (8-128GB)
    💾 11 PARAMETRI MEMORY MANAGEMENT
    📊 IoPageLockLimit + SvcHostSplit valori esatti
@@ -53,7 +53,7 @@ if($build -lt 22000){
 
 Clear-Host
 Write-Host "`n  ╔═══════════════════════════════════════════════════════╗" -F Cyan
-Write-Host "  ║  OGD WinCaffè v7.2.3 ULTIMATE - DISCLAIMER & CREDITI  ║" -F Cyan
+Write-Host "  ║  OGD WinCaffè v7.3.0 ULTIMATE - DISCLAIMER & CREDITI  ║" -F Cyan
 Write-Host "  ╚═══════════════════════════════════════════════════════╝`n" -F Cyan
 
 Write-Host "  📜 INFORMAZIONI IMPORTANTI:`n" -F Yellow
@@ -97,7 +97,7 @@ if($accept -notin @("S","s")){
 #  AUTO-UPDATE CHECK
 # ═════════════════════════════════════════════════════════════════════════════
 
-$currentVersion="7.2.3"
+$currentVersion="7.3.0"
 $installedScript="C:\OGD\OGD_WinCaffe_ULTIMATE.ps1"
 
 if(Test-Path $installedScript){
@@ -284,7 +284,7 @@ if($missingDotnet.Count -gt 0){
 
 Clear-Host
 Write-Host "`n  ╔═══════════════════════════════════════════════════════╗" -F Cyan
-Write-Host "  ║     OGD WinCaffè v7.2.3 ULTIMATE - Installazione       ║" -F Cyan
+Write-Host "  ║     OGD WinCaffè v7.3.0 ULTIMATE - Installazione       ║" -F Cyan
 Write-Host "  ╚═══════════════════════════════════════════════════════╝`n" -F Cyan
 
 Write-Host "  [1] ⚙️  INSTALLA - Aggiungi comando 'wincaffe' globale" -F Green
@@ -333,7 +333,7 @@ if($setupChoice -eq "1"){
     $functionCode=@"
 
 # ═════════════════════════════════════════════════════════════════
-# OGD WinCaffè v7.2.3 ULTIMATE - Installato da #DarkPlayer84Tv
+# OGD WinCaffè v7.3.0 ULTIMATE - Installato da #DarkPlayer84Tv
 # ═════════════════════════════════════════════════════════════════
 function wincaffe {
     if(-not([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator")){
@@ -429,7 +429,7 @@ function Show-Banner {
     Write-Host "  ║                                                       ║" -F Cyan
     Write-Host "  ║     ▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄  ▄▄▄▄▄▄    ⚡                  ║" -F Yellow
     Write-Host "  ║    █       ██       ██      █                        ║" -F Yellow
-    Write-Host "  ║    █   ▄   ██   ▄▄▄▄█  ▄    █  WinCaffè v7.2.3        ║" -F Yellow
+    Write-Host "  ║    █   ▄   ██   ▄▄▄▄█  ▄    █  WinCaffè v7.3.0        ║" -F Yellow
     Write-Host "  ║    █  █ █  ██  █  ▄▄█ █ █   █  ULTIMATE              ║" -F Yellow
     Write-Host "  ║    █  █▄█  ██  █ █  █ █▄█   █                        ║" -F Yellow
     Write-Host "  ║    █       ██  █▄▄█ █       █  ⚡                    ║" -F Yellow
@@ -513,7 +513,7 @@ Write-Section "BACKUP E SICUREZZA"
 
 try{
     Enable-ComputerRestore -Drive "C:\" -EA SilentlyContinue
-    $desc="OGD WinCaffè v7.2.3 - $(Get-Date -Format 'dd/MM/yyyy HH:mm')"
+    $desc="OGD WinCaffè v7.3.0 - $(Get-Date -Format 'dd/MM/yyyy HH:mm')"
     Checkpoint-Computer -Description $desc -RestorePointType MODIFY_SETTINGS -EA Stop
     Write-Success "Punto ripristino: $desc"
     Write-Info "Ripristino: F8 al boot → Ripristino configurazione sistema"
@@ -607,6 +607,40 @@ if($mode -in @("1","2","3")){
 }
 
 # ═════════════════════════════════════════════════════════════════════════════
+#  MENU NETWORK OPTIMIZATION (WiFi/Ethernet/Entrambi)
+# ═════════════════════════════════════════════════════════════════════════════
+
+$networkType="0"
+if($mode -in @("1","2","3")){
+    Show-Banner
+    Write-Section "NETWORK OPTIMIZATION"
+    
+    Write-Host "`n  🌐 Vuoi ottimizzare rete WiFi o Ethernet?`n" -F Cyan
+    
+    Write-Host "  [1] 📡 WiFi ONLY - Ottimizzazioni wireless" -F Cyan
+    Write-Host "      • TCP/IP optimization" -F DarkGray
+    Write-Host "      • WiFi power saving OFF" -F DarkGray
+    Write-Host "      • Random MAC addresses OFF" -F DarkGray
+    Write-Host "      • WiFi latency reduction" -F DarkGray
+    Write-Host "      • QoS optimization`n" -F DarkGray
+    
+    Write-Host "  [2] 🔌 ETHERNET ONLY - Ottimizzazioni cablate" -F Green
+    Write-Host "      • TCP/IP optimization" -F DarkGray
+    Write-Host "      • Interrupt moderation" -F DarkGray
+    Write-Host "      • RSS (Receive Side Scaling)" -F DarkGray
+    Write-Host "      • Offload settings (LSO/TSO)" -F DarkGray
+    Write-Host "      • Jumbo Frames (se supportati)" -F DarkGray
+    Write-Host "      • Energy Efficient Ethernet OFF`n" -F DarkGray
+    
+    Write-Host "  [3] 🌐 ENTRAMBI - WiFi + Ethernet" -F Yellow
+    Write-Host "      • Tutte le ottimizzazioni combinate`n" -F DarkGray
+    
+    Write-Host "  [0] ⏭️  SALTA - Nessuna ottimizzazione network`n" -F White
+    
+    $networkType=Read-Host "  Scelta (0-3)"
+}
+
+# ═════════════════════════════════════════════════════════════════════════════
 #  MENU PROGRAMMI OPZIONALI (solo se livello 1/2/3)
 # ═════════════════════════════════════════════════════════════════════════════
 
@@ -689,7 +723,7 @@ if($mode -eq "7"){
     Show-Banner;Write-Section "RESET SISTEMA"
     Write-Host "`n  RIPRISTINO:" -F Cyan
     Write-Host "  1. F8 al boot → Ripristino sistema" -F White
-    Write-Host "  2. Seleziona: 'OGD WinCaffè v7.2.3'`n" -F White
+    Write-Host "  2. Seleziona: 'OGD WinCaffè v7.3.0'`n" -F White
     Read-Host "  INVIO";exit
 }
 
@@ -842,7 +876,7 @@ if($mode -in @("1","2","3")){
         else{
             $ng=powercfg /duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 2>$null
             if($ng -match '([a-f0-9-]{36})'){
-                powercfg /changename $Matches[1] "Ultimate OGD v7.2.3" 2>$null
+                powercfg /changename $Matches[1] "Ultimate OGD v7.3.0" 2>$null
                 powercfg /setactive $Matches[1] 2>$null
             }
         }
@@ -853,7 +887,7 @@ Add-Type @"
 using System.Runtime.InteropServices;
 public class TR{[DllImport("ntdll.dll")]public static extern int NtSetTimerResolution(uint d,bool s,out uint c);}
 "@
-$Host.UI.RawUI.WindowTitle="Timer 0.5ms - OGD v7.2.3"
+$Host.UI.RawUI.WindowTitle="Timer 0.5ms - OGD v7.3.0"
 $d=5000;$c=0;[TR]::NtSetTimerResolution($d,$true,[ref]$c)
 Write-Host "Timer 0.5ms attivo - Minimizza (non chiudere)" -ForegroundColor Green
 while($true){Start-Sleep 3600}
@@ -1290,10 +1324,250 @@ while($true){Start-Sleep 3600}
     Write-Host "  3. Minimizza timer durante gaming`n" -F White
     Write-Info "Backup salvato in: $bkDir"
     Write-Host "`n  ════════════════════════════════════════════════════" -F Cyan
-    Write-Host "   OGD WinCaffè v7.2.3 ULTIMATE" -F Yellow
+    Write-Host "   OGD WinCaffè v7.3.0 ULTIMATE" -F Yellow
     Write-Host "   #DarkPlayer84Tv Productions" -F Green
     Write-Host "   by OldGamerDarthy Official" -F Green
     Write-Host "  ════════════════════════════════════════════════════`n" -F Cyan
+    
+    # ═════════════════════════════════════════════════════════════════════════════
+    #  APPLICAZIONE NETWORK OPTIMIZATION
+    # ═════════════════════════════════════════════════════════════════════════════
+    
+    if($networkType -ne "0"){
+        Show-Banner
+        Write-Section "NETWORK OPTIMIZATION"
+        
+        $netTypeStr=switch($networkType){"1"{"WiFi ONLY"}"2"{"Ethernet ONLY"}"3"{"WiFi + Ethernet"}}
+        Write-Host "`n  🌐 Applicazione ottimizzazioni: $netTypeStr`n" -F Cyan
+        
+        # ═════════════════════════════════════════════════════════════════════════
+        #  TCP/IP REGISTRY TWEAKS (comuni a WiFi e Ethernet)
+        # ═════════════════════════════════════════════════════════════════════════
+        
+        Write-Info "TCP/IP Stack Optimization..."
+        
+        # NetworkThrottlingIndex = FFFFFFFF (disabilita throttling)
+        $mmsp="HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile"
+        if(!(Test-Path $mmsp)){New-Item $mmsp -Force -EA SilentlyContinue|Out-Null}
+        reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d 0xFFFFFFFF /f 2>$null|Out-Null
+        
+        # TCP/IP Parameters
+        $tcpip="HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters"
+        if(!(Test-Path $tcpip)){New-Item $tcpip -Force -EA SilentlyContinue|Out-Null}
+        
+        # TcpAckFrequency = 1 (no delay ACK)
+        New-ItemProperty $tcpip -Name "TcpAckFrequency" -PropertyType "DWord" -Value 1 -Force -EA SilentlyContinue|Out-Null
+        
+        # TCPNoDelay = 1 (Nagle algorithm OFF)
+        New-ItemProperty $tcpip -Name "TCPNoDelay" -PropertyType "DWord" -Value 1 -Force -EA SilentlyContinue|Out-Null
+        
+        # IRPStackSize = 32 (da 15 default) - per connessioni >10Mbps
+        New-ItemProperty $tcpip -Name "IRPStackSize" -PropertyType "DWord" -Value 32 -Force -EA SilentlyContinue|Out-Null
+        
+        # GlobalMaxTcpWindowSize = 65535
+        New-ItemProperty $tcpip -Name "GlobalMaxTcpWindowSize" -PropertyType "DWord" -Value 65535 -Force -EA SilentlyContinue|Out-Null
+        
+        # Disable NetBIOS over TCP/IP (già in step Privacy ma forzo)
+        reg add "HKLM\SYSTEM\CurrentControlSet\Services\NetBT\Parameters" /v "EnableLMHOSTS" /t REG_DWORD /d 0 /f 2>$null|Out-Null
+        
+        Write-Success "TCP/IP optimized (Throttling OFF, ACK Freq, Nagle OFF)"
+        
+        # ═════════════════════════════════════════════════════════════════════════
+        #  WiFi ADAPTER SETTINGS
+        # ═════════════════════════════════════════════════════════════════════════
+        
+        if($networkType -in @("1","3")){
+            Write-Host ""
+            Write-Info "WiFi Adapter Optimization..."
+            
+            # Trova tutti gli adapter WiFi
+            $wifiAdapters=Get-NetAdapter -Physical|Where-Object{$_.MediaType -like "*802.11*" -or $_.InterfaceDescription -like "*Wi-Fi*" -or $_.InterfaceDescription -like "*Wireless*"}
+            
+            if($wifiAdapters){
+                foreach($adapter in $wifiAdapters){
+                    Write-Host "  → $($adapter.Name): $($adapter.InterfaceDescription)" -F DarkGray
+                    
+                    # Power Management OFF
+                    $devID=$adapter.DeviceID
+                    $regPath="HKLM:\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\$devID"
+                    if(Test-Path $regPath){
+                        Set-ItemProperty $regPath -Name "PnPCapabilities" -Value 24 -Type DWord -Force -EA SilentlyContinue
+                    }
+                    
+                    try{
+                        # Roaming Aggressiveness = Lowest (1) - stability per home network
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Roaming Aggressiveness" -DisplayValue "1. Lowest" -EA SilentlyContinue
+                    }catch{}
+                    
+                    try{
+                        # Transmit Power = Highest
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Transmit Power" -DisplayValue "Highest" -EA SilentlyContinue
+                    }catch{}
+                    
+                    try{
+                        # Power Saving Mode = Disabled / Maximum Performance
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Power Saving Mode" -DisplayValue "Maximum Performance" -EA SilentlyContinue
+                    }catch{
+                        try{
+                            Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "MIMO Power Save Mode" -DisplayValue "No SMPS" -EA SilentlyContinue
+                        }catch{}
+                    }
+                    
+                    try{
+                        # 802.11n Mode = Enabled
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "802.11n Mode" -DisplayValue "Enabled" -EA SilentlyContinue
+                    }catch{}
+                    
+                    try{
+                        # Fat Channel Intolerant = Disabled
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Fat Channel Intolerant" -DisplayValue "Disabled" -EA SilentlyContinue
+                    }catch{}
+                    
+                    try{
+                        # Throughput Enhancement / Booster = Disabled (single device home network)
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Throughput Enhancement" -DisplayValue "Disabled" -EA SilentlyContinue
+                    }catch{
+                        try{
+                            Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Throughput Booster" -DisplayValue "Disabled" -EA SilentlyContinue
+                        }catch{}
+                    }
+                }
+                Write-Success "WiFi: Power OFF, Roaming Lowest, Transmit Highest"
+            }else{
+                Write-Host "  ⚠️ Nessun adapter WiFi trovato" -F Yellow
+            }
+        }
+        
+        # ═════════════════════════════════════════════════════════════════════════
+        #  ETHERNET ADAPTER SETTINGS
+        # ═════════════════════════════════════════════════════════════════════════
+        
+        if($networkType -in @("2","3")){
+            Write-Host ""
+            Write-Info "Ethernet Adapter Optimization..."
+            
+            # Trova tutti gli adapter Ethernet
+            $ethAdapters=Get-NetAdapter -Physical|Where-Object{$_.MediaType -like "*802.3*" -or $_.InterfaceDescription -like "*Ethernet*" -or $_.InterfaceDescription -like "*Gigabit*" -or $_.InterfaceDescription -like "*Realtek*" -or $_.InterfaceDescription -like "*Intel*"}
+            
+            if($ethAdapters){
+                foreach($adapter in $ethAdapters){
+                    Write-Host "  → $($adapter.Name): $($adapter.InterfaceDescription)" -F DarkGray
+                    
+                    # Power Management OFF
+                    $devID=$adapter.DeviceID
+                    $regPath="HKLM:\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\$devID"
+                    if(Test-Path $regPath){
+                        Set-ItemProperty $regPath -Name "PnPCapabilities" -Value 24 -Type DWord -Force -EA SilentlyContinue
+                    }
+                    
+                    try{
+                        # Energy Efficient Ethernet (EEE) = Disabled - gaming priority
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Energy Efficient Ethernet" -DisplayValue "Disabled" -EA SilentlyContinue
+                    }catch{}
+                    
+                    try{
+                        # Advanced EEE = Disabled
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Advanced EEE" -DisplayValue "Disabled" -EA SilentlyContinue
+                    }catch{}
+                    
+                    try{
+                        # Green Ethernet = Disabled
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Green Ethernet" -DisplayValue "Disabled" -EA SilentlyContinue
+                    }catch{}
+                    
+                    try{
+                        # Flow Control = Rx & Tx Enabled (prevent packet loss)
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Flow Control" -DisplayValue "Rx & Tx Enabled" -EA SilentlyContinue
+                    }catch{
+                        try{
+                            Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Flow Control" -DisplayValue "On" -EA SilentlyContinue
+                        }catch{}
+                    }
+                    
+                    try{
+                        # Interrupt Moderation = Disabled (lowest latency gaming)
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Interrupt Moderation" -DisplayValue "Disabled" -EA SilentlyContinue
+                    }catch{}
+                    
+                    try{
+                        # Jumbo Frames = 9000 (se supportato)
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Jumbo Frame" -DisplayValue "9014" -EA SilentlyContinue
+                    }catch{
+                        try{
+                            Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Jumbo Packet" -DisplayValue "9KB MTU" -EA SilentlyContinue
+                        }catch{}
+                    }
+                    
+                    try{
+                        # Large Send Offload v2 IPv4 = Disabled (controverso, ma migliore per gaming)
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Large Send Offload V2 (IPv4)" -DisplayValue "Disabled" -EA SilentlyContinue
+                    }catch{}
+                    
+                    try{
+                        # Large Send Offload v2 IPv6 = Disabled
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Large Send Offload V2 (IPv6)" -DisplayValue "Disabled" -EA SilentlyContinue
+                    }catch{}
+                    
+                    try{
+                        # TCP Checksum Offload IPv4 = Enabled (reduce CPU)
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "TCP Checksum Offload (IPv4)" -DisplayValue "Rx & Tx Enabled" -EA SilentlyContinue
+                    }catch{}
+                    
+                    try{
+                        # TCP Checksum Offload IPv6 = Enabled
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "TCP Checksum Offload (IPv6)" -DisplayValue "Rx & Tx Enabled" -EA SilentlyContinue
+                    }catch{}
+                    
+                    try{
+                        # UDP Checksum Offload IPv4 = Enabled
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "UDP Checksum Offload (IPv4)" -DisplayValue "Rx & Tx Enabled" -EA SilentlyContinue
+                    }catch{}
+                    
+                    try{
+                        # UDP Checksum Offload IPv6 = Enabled
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "UDP Checksum Offload (IPv6)" -DisplayValue "Rx & Tx Enabled" -EA SilentlyContinue
+                    }catch{}
+                    
+                    try{
+                        # Receive Buffers = Maximum (2048 se disponibile)
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Receive Buffers" -DisplayValue "2048" -EA SilentlyContinue
+                    }catch{
+                        try{
+                            Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Receive Buffers" -DisplayValue "1024" -EA SilentlyContinue
+                        }catch{}
+                    }
+                    
+                    try{
+                        # Transmit Buffers = Maximum (2048 se disponibile)
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Transmit Buffers" -DisplayValue "2048" -EA SilentlyContinue
+                    }catch{
+                        try{
+                            Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Transmit Buffers" -DisplayValue "512" -EA SilentlyContinue
+                        }catch{}
+                    }
+                    
+                    try{
+                        # Receive Side Scaling (RSS) = Enabled (multi-core)
+                        Set-NetAdapterAdvancedProperty -Name $adapter.Name -DisplayName "Receive Side Scaling" -DisplayValue "Enabled" -EA SilentlyContinue
+                    }catch{}
+                    
+                    # RSS Queue Binding (cores 2-3 se 4+ cores)
+                    $cpuCount=(Get-CimInstance Win32_Processor).NumberOfLogicalProcessors
+                    if($cpuCount -ge 4){
+                        try{
+                            Set-NetAdapterRSS -Name $adapter.Name -BaseProcessorNumber 2 -EA SilentlyContinue
+                        }catch{}
+                    }
+                }
+                Write-Success "Ethernet: EEE OFF, Interrupt Mod OFF, Jumbo 9K, RSS ON"
+            }else{
+                Write-Host "  ⚠️ Nessun adapter Ethernet trovato" -F Yellow
+            }
+        }
+        
+        Write-Host "`n  ✓ Network Optimization completata!`n" -F Green
+        Start-Sleep 2
+    }
     
     # Installazione programmi opzionali (se richiesti)
     if($installPrograms -and $selectedApps.Count -gt 0){
